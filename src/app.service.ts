@@ -1,8 +1,9 @@
+/* Contain the basic sercice implementation */
 import { Injectable } from '@nestjs/common';
 
-@Injectable()
+@Injectable() /*  = decorator */
 export class AppService {
   getHello(): string {
-    return 'Hellos!';
+    return 'Hello world! :)';
   }
 }
