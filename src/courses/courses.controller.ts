@@ -9,9 +9,11 @@ import {
   ParseIntPipe,
   Post,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Course, CourseNotFound } from './courses.model';
 import { CoursesService } from './courses.service';
 
+@ApiTags('Course')
 @Controller('courses')
 export class CoursesController {
   coursesService: CoursesService;
@@ -26,8 +28,8 @@ export class CoursesController {
     return courses;
   }
 
-  @Get(':courseId')
-  async getCourseById(@Param('courseId', ParseIntPipe) courseId: number) {
+  @Get(':id')
+  async getCourseById(@Param('id', ParseIntPipe) courseId: number) {
     /* id is a string, so that we need to use ParseIntPipe to convert to number */
     try {
       const course = await this.coursesService.getCourse(courseId);
