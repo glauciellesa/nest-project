@@ -1,4 +1,6 @@
-export const COURSES = [
+import { Course } from './courses.model';
+
+export const COURSES: Course[] = [
   {
     id: 1,
     title: 'NodeJS - The Complete Guide (incl. MVC, REST APIs, GraphQL)',

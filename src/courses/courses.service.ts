@@ -1,23 +1,25 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { COURSES } from './courses.mock';
+import { Course, CourseNotFound } from './courses.model';
 
 @Injectable()
 export class CoursesService {
   courses = COURSES;
 
-  getCourses(): Promise<any> {
+  getCourses(): Promise<Course[]> {
     return new Promise((resolve) => {
       resolve(this.courses);
     });
   }
-  /* getCourse(courseId: any): Promise<any> {
-    let id = Number(courseId);
+
+  getCourse(courseId: number): Promise<Course> {
     return new Promise((resolve) => {
-      const course = this.courses.find((course) => course.id === id);
+      const course = this.courses.find((course) => course.id === courseId);
+
       if (!course) {
-        throw new HttpException('Course does not exist', 404);
+        throw new CourseNotFound();
       }
       resolve(course);
     });
-  } */
+  }
 }
